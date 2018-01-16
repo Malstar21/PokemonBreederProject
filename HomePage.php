@@ -1,4 +1,8 @@
-<!DOCTYPE HTML>
+<?php
+	include 'list.php';
+	$pokeList = $_SESSION['PokeList'];
+?>
+
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/design.css">
@@ -7,19 +11,21 @@
 	<body>
 		<center>
 		<select>
-			<option value="volvo">Volvo</option>
-			<option value="saab">Saab</option>
-			<option value="mercedes">Mercedes</option>
+			<?php			
+				$pokeList->DisplayPokeHTML();
+			?>
 		</select>
 		
 		<select>
-			<option value="volvo">Volvo</option>
-			<option value="saab">Saab</option>
-			<option value="mercedes">Mercedes</option>
+			<?php			
+				$pokeList->DisplayPokeHTML();
+			?>
 		</select>	
 		</center>
 		
-		<center><button type="button"> Search </button></center>
+		<!-- Submit button -->
+		<center><Input type = "submit" value = "Submit" onclick=""></center>
+		
 		<div id="BreedList">
 		<font size = 4><center>Breed List</center></font>
 		</div>
