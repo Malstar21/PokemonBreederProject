@@ -19,7 +19,15 @@
 		}
 		
 		public function getFirstEntry() {
-			return $this->pokemonInfo[149]['pokeURL'];
+			return $this->pokemonInfo[0]['pokeURL'];
+		}
+		
+		public function DisplayPokeHTML() {
+			foreach($this->pokemonInfo as $pokeInfo) {
+				echo '<option value="volvo">';
+				echo $pokeInfo['pokeName'];
+				echo '</option>';
+			}
 		}
 	}
 	
@@ -36,9 +44,7 @@
 	// for now doing it this way for testing 
 	$pokemons = file_get_contents("http://pokeapi.co/api/v2/pokemon/?limit=949");
 	$rPokemons = json_decode($pokemons, true);
-    
-    
-    echo ($rPokemons['results'][149]['name']);
+
 	// get all pokemon 
 	while($numPoke < $rPokemons['count']) {
 		$name = $rPokemons['results'][$numPoke]['name'];

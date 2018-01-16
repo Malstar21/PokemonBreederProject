@@ -1,4 +1,6 @@
 <?php
+	session_start();
+	
 	class PokemonList {
 		private $pokemonInfo = [];
 		
@@ -18,30 +20,31 @@
 			}
 		}
         
-        public function DisplayPokeHTML() {
-            foreach($this->pokemonInfo as $pokemInfo)
-                echo '<option value="volvo">';
+		public function DisplayPokeHTML() {
+            foreach($this->pokemonInfo as $pokeInfo) {
+                echo '<option value="'. $pokeInfo['pokeName'] .'">';
                 echo $pokeInfo['pokeName'];
                 echo '</option>';
+			}
         }
 		
 	}
 
 
-$pokeList = new PokemonList();
-$numPoke = 0;
+	$pokeList = new PokemonList();
+	$numPoke = 0;
 
 
-$pokemons = file_get_contents("http://pokeapi.co/api/v2/pokemon/?limit=949");
-$rPokemons = json_decode($pokemons, true);
-
-while($numPoke < $rPokemons['count']) {
-		$name = $rPokemons['results'][$numPoke]['name'];
-		$url = $rPokemons['results'][$numPoke]['url'];
-		$pokeList->addEntry($name, $url);
-		$numPoke++;
-	}
-
-
+	$pokemons = file_get_contents("http://pokeapi.co/api/v2/pokemon/?limit=949");
+	$rPokemons = json_decode($pokemons, true);
+	
+	while($numPoke < $rPokemons['count']) {
+			$name = $rPokemons['results'][$numPoke]['name'];
+			$url = $rPokemons['results'][$numPoke]['url'];
+			$pokeList->addEntry($name, $url);
+			$numPoke++;
+		}
+	
+	$_SESSION['PokeList'] = $pokeList;
 ?>
 
