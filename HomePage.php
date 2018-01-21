@@ -5,18 +5,42 @@
 
 <html>
 	<head>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script  type="text/javascript">
+	$(document).ready(function() {
+		$("#submitPoke").click(function() {  // when submitPoke is clicked
+			var list1Poke = $("select[name='list1']").val();  // get value of list1
+			var list2Poke = $("select[name='list2']").val();  // get value of list2
+			
+			// ajax 
+			$.ajax({
+				type: "POST",
+				url: "BreedList.php",
+				data: {
+					Poke1: list1Poke, 
+					Poke2: list2Poke,
+				},
+				success: function(result){
+					$("#BreedList").html(result);  // display in BreedList div tag
+				}
+			});
+			
+		});
+	});
+	</script>
+	
 		<link rel="stylesheet" type="text/css" href="css/design.css">
 		<font size = 5><strong><center>Welcome to PokeBreeder</center></strong></font>
 	</head>
 	<body>
 		<center>
-		<select>
+		<select name="list1" id="list1">
 			<?php			
 				$pokeList->DisplayPokeHTML();
 			?>
 		</select>
 		
-		<select>
+		<select name="list2" id="list2">
 			<?php			
 				$pokeList->DisplayPokeHTML();
 			?>
@@ -24,10 +48,8 @@
 		</center>
 		
 		<!-- Submit button -->
-		<center><Input type = "submit" value = "Submit" onclick=""></center>
+		<center><Input type="submit" id="submitPoke" value="Submit"></center>
 		
-		<div id="BreedList">
-		<font size = 4><center>Breed List</center></font>
-		</div>
+		<div id="BreedList"></div>
 	</body>
 </html>
