@@ -9,6 +9,12 @@
 	<script  type="text/javascript">
 	$(document).ready(function() {
 		$("#submitPoke").click(function() {  // when submitPoke is clicked
+		
+			// toggle div tags 
+			$("#submitPoke").toggle();
+			$("#loading").toggle();
+			$("#BreedList").toggle();
+			
 			var list1Poke = $("select[name='list1']").val();  // get value of list1
 			var list2Poke = $("select[name='list2']").val();  // get value of list2
 			
@@ -21,6 +27,9 @@
 					Poke2: list2Poke,
 				},
 				success: function(result){
+					$("#loading").toggle();
+					$("#submitPoke").toggle();
+					$("#BreedList").toggle();
 					$("#BreedList").html(result);  // display in BreedList div tag
 				}
 			});
@@ -49,6 +58,10 @@
 		
 		<!-- Submit button -->
 		<center><Input type="submit" id="submitPoke" value="Submit"></center>
+		
+		<div id="loading" style="display: none;">
+			<center><font size = 3>Loading</font></center>
+		</div>
 		
 		<div id="BreedList"></div>
 	</body>
