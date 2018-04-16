@@ -37,12 +37,15 @@
 		});
 	});
 	</script>
-	
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/design.css">
-		<font size = 5><strong><center>Welcome to PokeBreeder</center></strong></font>
+		<font size = 5><strong><center>Welcome to PokéBreeder</center></strong></font>
 	</head>
 	<body>
+		<center>Select two Pokémon to compare egg groups</center>
+		<center>A list will be returned with the Pokémon they can <b>both</b> breed with</center>
 		<center>
+		
 		<select name="list1" id="list1">
 			<?php			
 				$pokeList->DisplayPokeHTML();
@@ -57,10 +60,12 @@
 		</center>
 		
 		<!-- Submit button -->
-		<center><Input type="submit" id="submitPoke" value="Submit"></center>
+		<center><Input type="submit" id="submitPoke" class="btn btn-primary" 
+		data-toggle="tooltip" data-placement="bottom" title="Click to begin search" 
+		value="Submit"></center>
 		
 		<div id="loading" style="display: none;">
-			<center><font size = 3>Loading</font></center>
+			<center><font size = 3>Searching...Please Wait</font></center>
 		</div>
 		
 		<div id="BreedList"></div>
