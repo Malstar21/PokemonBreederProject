@@ -37,15 +37,30 @@
 		$result = array_intersect($EggNames1, $EggNames2);		
 		$result = array_unique($result);
 		
+		// echo out result 
+		// echo table
+		echo '<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+					</tr>
+				</thead>';
+		
+		// if empty display empty 
 		if(empty($result)) {
-			echo '<center> Empty </center>';
+			echo '<tr>';
+			echo '<td> Empty </td>';
+			echo '</tr>';
+			exit();  // exit PHP 
 		}
 		
-		// echo out result 
-		echo '<center>';
+		// echo results to table
+		echo '<tbody>';
 		foreach($result as $r) {
-			echo $r . '<br>';
+			echo '<tr>';
+			echo '<td>' . $r . '</td>';
+			echo '</tr>';
 		}
-		echo '</center>';
+		echo '</tbody>';
 	}
 ?>
